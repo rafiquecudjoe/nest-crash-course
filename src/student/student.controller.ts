@@ -1,33 +1,38 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { CreateStudentsDto, FindStudentsResponseDto, StudentsResponseDto, UpdateStudentsDto } from './dto/students.dto';
 
 @Controller('students')
 export class StudentController {
 
     @Get()
-    getStudents() {
-        return "All Students"
+    getStudents() :FindStudentsResponseDto[] {
+        return []
     }
 
     @Get('/:studentId')
     getStudentById(
         @Param('studentId') studentId: string
-    ) {
+    ):FindStudentsResponseDto {
 
-        return `Get Student by Id ${studentId}`
+        return 
 
     }
 
     @Post()
     createStudent(
-        @Body() body
-    ) {
+        @Body() body: CreateStudentsDto
+    ) :StudentsResponseDto {
 
-        return "Create student"
+        return 
     }
 
     @Put('/:studentId')
-    updateStudent() {
-        return "Update Student by ID"
+    updateStudent(
+        @Param('studentId') studentsId: string,
+        @Body() body: UpdateStudentsDto
+    ) :StudentsResponseDto {
+        console.log(studentsId)
+        return 
     }
 
 
